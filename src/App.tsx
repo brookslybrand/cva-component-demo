@@ -119,11 +119,10 @@ function Button({
       className={buttonVariants({
         className,
         intent,
-        size,
         rounded,
+        size,
         _content: LeadingIcon || TrailingIcon ? "textAndIcon" : "text",
       })}
-      type="button"
       {...props}
     >
       {LeadingIcon ? (
@@ -141,16 +140,16 @@ type IconButtonProps = Omit<
   ButtonProps,
   "rounded" | "leadingIcon" | "trailingIcon" | "children"
 > & {
-  icon: SVGComponent;
   hiddenLabel: string;
+  icon: SVGComponent;
 };
 
 function IconButton({
+  icon: Icon,
   intent,
   size,
-  className,
   hiddenLabel,
-  icon: Icon,
+  className,
   ...props
 }: IconButtonProps) {
   return (
@@ -158,14 +157,14 @@ function IconButton({
       className={buttonVariants({
         className,
         intent,
-        size,
         rounded: "full",
+        size,
         _content: "icon",
       })}
       {...props}
     >
       <p className="sr-only">{hiddenLabel}</p>
-      <Icon className="h-5 w-5" />
+      <Icon className="h-5 w-5" aria-hidden="true" />
     </button>
   );
 }
@@ -174,10 +173,10 @@ const buttonVariants = cva("font-semibold shadow-sm", {
   variants: {
     intent: {
       primary:
-        "bg-teal-700 text-white hover:bg-teal-800 active:bg-teal-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600",
+        "bg-teal-700 text-white hover:bg-teal-800 active:bg-teal-900 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-700",
       secondary:
         "bg-white text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 active:bg-gray-100",
-      soft: "bg-teal-50 text-teal-700 shadow-sm hover:bg-teal-100 active:bg-teal-200",
+      soft: "bg-indigo-50 text-teal-700 hover:bg-teal-100 active:bg-teal-200",
     },
     size: {
       xs: "text-xs",
